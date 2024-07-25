@@ -1,0 +1,51 @@
+html, body { height: 100%}
+
+body {
+	background: black;
+	margin: 0;
+	position: relative;
+}
+
+canvas {
+	display: block;
+	image-rendering: smooth;
+	left: 50%;
+	margin-bottom: 3rem;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+button {
+	background: black;
+	border: 0;
+	color: white;
+	cursor: pointer;
+	padding: 1rem;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+	z-index: 99;
+	transition: background 150ms ease-in, outline-offset 50ms ease-out;
+	outline: 1px solid black;
+	outline-offset: -1px;
+
+	animation: pulse 1.5s ease-in-out infinite;
+
+	&:hover {
+		animation: none;
+		outline-offset: 2px;
+	}
+
+	&:active {
+		background-color: rgb(0 0 0 / 60%);
+		animation: none;
+	}
+}
+
+@keyframes pulse {
+	0% { opacity: 1 }
+	50% { opacity: 0.6 }
+	100% { opacity: 1 }
+}
