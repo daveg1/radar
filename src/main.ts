@@ -21,7 +21,7 @@ const canvasLayer4 = document.querySelector<HTMLCanvasElement>('#layer4')!
 const ctxLayer4 = canvasLayer4.getContext('2d')!
 
 const pingImage = new Image()
-pingImage.src = '/ping.png'
+pingImage.src = '/radar/ping.png'
 
 pingImage.onload = () => {
 	State.image = pingImage

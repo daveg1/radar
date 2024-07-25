@@ -26,7 +26,7 @@ export const State = new (class State {
 
 		this.#isAudioPlaying = true
 
-		this.#currentAudio = new Audio('/sonar.mp3')
+		this.#currentAudio = new Audio('/radar/sonar.mp3')
 		this.#currentAudio.play().catch(console.log)
 
 		this.#currentAudio.onended = () => {
