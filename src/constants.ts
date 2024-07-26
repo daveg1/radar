@@ -1,7 +1,3 @@
-export const getRadarSize = () => {
-	return
-}
-
 export const Constants = new (class Constants {
 	COLOR_GREEN = '#76D731'
 	COLOR_TEAL = '#0B633B'
