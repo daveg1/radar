@@ -11,7 +11,6 @@ export const renderPins = (ctx: CanvasRenderingContext2D) => {
 	ctx.font = `1em monospace`
 
 	for (let deg = 0; deg < 360; deg += 10) {
-		// TODO: change this value depending on the side the text is on
 		if (deg > 180 && deg < 360) {
 			ctx.textAlign = 'right'
 		} else if (deg > 0 && deg < 180) {
@@ -45,5 +44,19 @@ export const renderPins = (ctx: CanvasRenderingContext2D) => {
 		ctx.lineTo(pinEnd.x, pinEnd.y)
 		ctx.stroke()
 		ctx.closePath()
+
+		ctx.lineWidth = LINE_WIDTH / 2
+
+		// Render steps between 10s
+		for (let step = deg + 1; step < deg + 10; step++) {
+			const stepStart = pointOnCircle(RADIUS - PADDING_OUTER - LINE_WIDTH, step)
+			const stepEnd = pointOnCircle(RADIUS - PADDING_OUTER + 1, step)
+
+			ctx.beginPath()
+			ctx.moveTo(stepStart.x, stepStart.y)
+			ctx.lineTo(stepEnd.x, stepEnd.y)
+			ctx.stroke()
+			ctx.closePath()
+		}
 	}
 }
