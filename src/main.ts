@@ -6,7 +6,6 @@ import { renderPing } from './radar/ping'
 import { State } from './state'
 import { renderText } from './radar/text'
 import { clearLayer, setupLayer } from './utils/canvas'
-import { RADAR_SIZE } from './constants'
 
 const canvasLayer1 = document.querySelector<HTMLCanvasElement>('#layer1')!
 const ctxLayer1 = canvasLayer1.getContext('2d')!
@@ -63,7 +62,7 @@ function render() {
 
 	// clearLayer(ctxLayer3)
 	ctxLayer3.fillStyle = 'rgb(0 0 0 / 10%)'
-	ctxLayer3.fillRect(0, 0, RADAR_SIZE, RADAR_SIZE)
+	ctxLayer3.fillRect(0, 0, canvasLayer3.width, canvasLayer3.height)
 	renderNeedle(ctxLayer3)
 
 	clearLayer(ctxLayer4)
@@ -73,3 +72,10 @@ function render() {
 }
 
 initial()
+
+window.onresize = () => {
+	setupLayer(canvasLayer1, ctxLayer1)
+	setupLayer(canvasLayer2, ctxLayer2)
+	setupLayer(canvasLayer3, ctxLayer3)
+	setupLayer(canvasLayer4, ctxLayer4)
+}

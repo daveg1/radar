@@ -1,6 +1,8 @@
-import { ORIGIN, LINE_WIDTH, PADDING_OUTER, RADIUS, COLOR_GREEN } from '../constants'
+import { Constants } from '../constants'
 
 export const renderConcentric = (ctx: CanvasRenderingContext2D) => {
+	const { ORIGIN, LINE_WIDTH, PADDING_OUTER, RADIUS, COLOR_GREEN } = Constants
+
 	const innerCircles = 4
 	const startRadius = RADIUS - LINE_WIDTH - PADDING_OUTER
 	const endRadius = 50

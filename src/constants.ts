@@ -1,10 +1,25 @@
-export const RADAR_SIZE = 750
-export const FONT_SIZE = 16
-export const LINE_WIDTH = 3
-export const PADDING_OUTER = FONT_SIZE * 2
+export const getRadarSize = () => {
+	return
+}
 
-export const ORIGIN = RADAR_SIZE / 2
-export const RADIUS = RADAR_SIZE / 2
+export const Constants = new (class Constants {
+	COLOR_GREEN = '#76D731'
+	COLOR_TEAL = '#0B633B'
+	FONT_SIZE = 16
+	LINE_WIDTH = 3
 
-export const COLOR_GREEN = '#76D731'
-export const COLOR_TEAL = '#0B633B'
+	get PADDING_OUTER() {
+		return this.FONT_SIZE * 2
+	}
+
+	get RADAR_SIZE() {
+		return Math.min(750, window.innerWidth - this.PADDING_OUTER * 2)
+	}
+
+	get ORIGIN() {
+		return this.RADAR_SIZE / 2
+	}
+	get RADIUS() {
+		return this.RADAR_SIZE / 2
+	}
+})()

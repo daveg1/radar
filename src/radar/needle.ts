@@ -1,8 +1,10 @@
 import { pointOnCircle } from '../utils/point'
-import { COLOR_GREEN, LINE_WIDTH, ORIGIN, PADDING_OUTER, RADIUS } from '../constants'
+import { Constants } from '../constants'
 import { State } from '../state'
 
 export const renderNeedle = (ctx: CanvasRenderingContext2D) => {
+	const { COLOR_GREEN, LINE_WIDTH, ORIGIN, PADDING_OUTER, RADIUS } = Constants
+
 	const points = pointOnCircle(RADIUS - PADDING_OUTER - LINE_WIDTH, State.needleRadius + 1)
 	const lagged = pointOnCircle(RADIUS - PADDING_OUTER - LINE_WIDTH, State.needleRadius - 1)
 

@@ -1,10 +1,12 @@
 import { pointOnCircle, degToRad } from '../utils/point'
-import { COLOR_GREEN, FONT_SIZE, PADDING_OUTER, RADIUS } from '../constants'
+import { Constants } from '../constants'
 
 export const renderText = (ctx: CanvasRenderingContext2D) => {
+	const { COLOR_GREEN, PADDING_OUTER, RADIUS } = Constants
+
 	ctx.strokeStyle = COLOR_GREEN
 	ctx.fillStyle = COLOR_GREEN
-	ctx.font = `${FONT_SIZE}px monospace`
+	ctx.font = `1em monospace`
 
 	for (let deg = 0; deg < 360; deg += 10) {
 		// TODO: change this value depending on the side the text is on
