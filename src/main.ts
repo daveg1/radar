@@ -4,7 +4,7 @@ import { renderGradient } from './radar/gradient'
 import { renderNeedle } from './radar/needle'
 import { renderPing } from './radar/ping'
 import { State } from './state'
-import { renderText } from './radar/text'
+import { renderPins } from './radar/pins'
 import { clearLayer, setupLayer } from './utils/canvas'
 
 const canvasLayer1 = document.querySelector<HTMLCanvasElement>('#layer1')!
@@ -40,11 +40,11 @@ setupLayer(canvasLayer4, ctxLayer4)
 
 // Render components
 
-function initial() {
+function setup() {
 	renderGradient(ctxLayer1)
 	renderNeedle(ctxLayer4)
 	renderConcentric(ctxLayer4)
-	renderText(ctxLayer4)
+	renderPins(ctxLayer4)
 }
 
 function render() {
@@ -68,14 +68,11 @@ function render() {
 	clearLayer(ctxLayer4)
 	renderNeedle(ctxLayer4)
 	renderConcentric(ctxLayer4)
-	renderText(ctxLayer4)
+	renderPins(ctxLayer4)
 }
 
-initial()
+setup()
 
 window.onresize = () => {
-	setupLayer(canvasLayer1, ctxLayer1)
-	setupLayer(canvasLayer2, ctxLayer2)
-	setupLayer(canvasLayer3, ctxLayer3)
-	setupLayer(canvasLayer4, ctxLayer4)
+	setup()
 }

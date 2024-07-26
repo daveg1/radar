@@ -1,10 +1,12 @@
 import { pointOnCircle, degToRad } from '../utils/point'
 import { Constants } from '../constants'
 
-export const renderText = (ctx: CanvasRenderingContext2D) => {
-	const { COLOR_GREEN, PADDING_OUTER, RADIUS } = Constants
+export const renderPins = (ctx: CanvasRenderingContext2D) => {
+	const { COLOR_GREEN, PADDING_OUTER, RADIUS, LINE_WIDTH } = Constants
 
 	ctx.strokeStyle = COLOR_GREEN
+	ctx.lineWidth = LINE_WIDTH
+	ctx.lineCap = 'round'
 	ctx.fillStyle = COLOR_GREEN
 	ctx.font = `1em monospace`
 
@@ -26,11 +28,22 @@ export const renderText = (ctx: CanvasRenderingContext2D) => {
 			ctx.textBaseline = 'alphabetic'
 		}
 
-		const { x, y } = pointOnCircle(RADIUS - PADDING_OUTER, deg)
+		const textPoint = pointOnCircle(RADIUS - PADDING_OUTER + 4, deg)
+		const pinStart = pointOnCircle(RADIUS - PADDING_OUTER - LINE_WIDTH, deg)
+		const pinEnd = pointOnCircle(RADIUS - PADDING_OUTER + 4, deg)
 
 		const offsetX = 4 * Math.cos(degToRad(deg)) * 1
 		const offsetY = 8 * Math.sin(degToRad(deg)) * 1
 
-		ctx.fillText(`${deg}`.padStart(3, '0'), x + offsetX, y + offsetY)
+		// Draw text
+		ctx.fillText(`${deg}`.padStart(3, '0'), textPoint.x + offsetX, textPoint.y + offsetY)
+
+		// Draw pin
+
+		ctx.beginPath()
+		ctx.moveTo(pinStart.x, pinStart.y)
+		ctx.lineTo(pinEnd.x, pinEnd.y)
+		ctx.stroke()
+		ctx.closePath()
 	}
 }
